@@ -1,0 +1,46 @@
+﻿@using System.Web.Optimization
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Online library | @ViewBag.Title</title>
+    <link rel="icon" href="~/Images/Books.png" type="image/x-icon">
+    <link href="~/CSS/StyleSheet.css" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet" type="text/css">
+    @Styles.Render("~/bundles/font-awesome/css")
+    @Styles.Render("~/bundles/animate/css")
+    @Styles.Render("~/bundles/bootstrap/css")
+    @Styles.Render("~/bundles/peicon7stroke/css")
+    @Styles.Render("~/bundles/peicon7stroke/css/helper")
+    @Styles.Render("~/bundles/peicon7stroke/css/style")
+    <link rel="stylesheet" href="~/CSS/StyleSheet.css" />
+
+    <!-- Add local styles, mostly for plugins css file -->
+    @if (IsSectionDefined("Styles"))
+    {@RenderSection("Styles", required: false)}
+
+    <!-- Primary HOME style -->
+    @Styles.Render("~/bundles/main/css")
+
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav>
+            @Html.Partial("_Header")
+        </nav>
+        <section class="content">
+            @RenderBody()
+            @Html.Partial(Session["HomepageView"] as string ?? "_Homepage")
+            @Html.Partial("_Footer")
+        </section>
+        @RenderSection("scripts", required: false)
+    </div>
+</body>
+</html>
