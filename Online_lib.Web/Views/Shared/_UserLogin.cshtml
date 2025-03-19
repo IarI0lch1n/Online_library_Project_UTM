@@ -1,0 +1,56 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col text-center">
+                            <img width="150px" src="~/Images/User.png" alt="User" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col text-center">
+                            <h3>Member Login</h3>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <hr />
+                        </div>
+                    </div>
+
+                    <form method="post">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <input asp-for="MemberID" class="form-control" placeholder="Member ID" />
+                                </div>
+
+                                <div class="form-group">
+                                    <input asp-for="Password" class="form-control" placeholder="Password" type="password" />
+                                </div>
+
+                                <hr style="border: none; height: 1px; margin: 20px 0; background-color: transparent;">
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success btn-lg d-block w-100">Login</button>
+                                </div>
+
+                                <hr style="border: none; height: 1px; margin: 20px 0; background-color: transparent;">
+
+                                <div class="form-group">
+                                    <a class="btn btn-info btn-lg d-block w-100" asp-page="userSignUp">Sign up</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <a href="@Url.Action("ChangeHomepage", "Home", new { homepage = "_Homepage" })">Back to Home Page</a>
+            <br><br>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,119 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+
+            <div class="card">
+                <div class="card-body">
+
+                    <div class="row">
+                        <div class="col">
+                            <center>
+                                <img width="100px" src="~/Images/SignUp.png" />
+                            </center>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <center>
+                                <h4>User Sign Up</h4>
+                            </center>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <hr />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="FullName">Full Name</label>
+                            <input class="form-control" id="FullName" type="text" placeholder="Full-Name" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="DateOfBirth">Date of Birth</label>
+                            <input class="form-control" id="DateOfBirth" type="date" placeholder="Date of Birth" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="ContactNumber">Contact Number</label>
+                            <input class="form-control" id="ContactNumber" type="tel" placeholder="Contact Number" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="Email">Email ID</label>
+                            <input class="form-control" id="Email" type="email" placeholder="Email ID" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="State">State</label>
+                            <select class="form-control" id="State">
+                                <option value="Select">Select</option>
+                                <option value="Moldova">Moldova</option>
+                                <option value="Romania">Romania</option>
+                                <option value="Ukraine">Ukraine</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="City">City</label>
+                            <input class="form-control" id="City" type="text" placeholder="City" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="Pincode">Pincode</label>
+                            <input class="form-control" id="Pincode" type="text" placeholder="Pincode" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <label for="FullAddress">Full Address</label>
+                            <textarea class="form-control" id="FullAddress" rows="2" placeholder="Full Address"></textarea>
+                        </div>
+                    </div>
+
+                    <hr style="border: none; height: 1px; margin: 20px 0; background-color: transparent;" />
+
+                    <div class="row">
+                        <div class="col text-center">
+                            <span class="badge rounded-pill bg-info p-2 text-white">Login Credentials</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="UserID">User ID</label>
+                            <input class="form-control" id="UserID" type="text" placeholder="User ID" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="Password">Password</label>
+                            <input class="form-control" id="Password" type="password" placeholder="Password" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <hr style="border: none; height: 1px; margin: 20px 0; background-color: transparent;" />
+                            <div class="form-group">
+                                <button class="btn btn-success btn-lg d-block w-100" type="submit">Sign Up</button>
+                            </div>
+
+                            <hr style="border: none; height: 1px; margin: 20px 0; background-color: transparent;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="@Url.Action("ChangeHomepage", "Home", new { homepage = "_Homepage" })">Back to Home Page</a><br><br>
+        </div>
+    </div>
+</div>
