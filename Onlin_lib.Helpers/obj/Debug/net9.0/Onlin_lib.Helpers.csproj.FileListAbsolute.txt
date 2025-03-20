@@ -1,0 +1,12 @@
+G:\Project\Online_library_Project_UTM\Onlin_lib.Helpers\bin\Debug\net9.0\Onlin_lib.Helpers.deps.json
+G:\Project\Online_library_Project_UTM\Onlin_lib.Helpers\bin\Debug\net9.0\Onlin_lib.Helpers.dll
+G:\Project\Online_library_Project_UTM\Onlin_lib.Helpers\bin\Debug\net9.0\Onlin_lib.Helpers.pdb
+G:\Project\Online_library_Project_UTM\Onlin_lib.Helpers\obj\Debug\net9.0\Onlin_lib.Helpers.GeneratedMSBuildEditorConfig.editorconfig
+G:\Project\Online_library_Project_UTM\Onlin_lib.Helpers\obj\Debug\net9.0\Onlin_lib.Helpers.AssemblyInfoInputs.cache
+G:\Project\Online_library_Project_UTM\Onlin_lib.Helpers\obj\Debug\net9.0\Onlin_lib.Helpers.AssemblyInfo.cs
+G:\Project\Online_library_Project_UTM\Onlin_lib.Helpers\obj\Debug\net9.0\Onlin_lib.Helpers.csproj.CoreCompileInputs.cache
+G:\Project\Online_library_Project_UTM\Onlin_lib.Helpers\obj\Debug\net9.0\Onlin_lib.Helpers.sourcelink.json
+G:\Project\Online_library_Project_UTM\Onlin_lib.Helpers\obj\Debug\net9.0\Onlin_lib.Helpers.dll
+G:\Project\Online_library_Project_UTM\Onlin_lib.Helpers\obj\Debug\net9.0\refint\Onlin_lib.Helpers.dll
+G:\Project\Online_library_Project_UTM\Onlin_lib.Helpers\obj\Debug\net9.0\Onlin_lib.Helpers.pdb
+G:\Project\Online_library_Project_UTM\Onlin_lib.Helpers\obj\Debug\net9.0\ref\Onlin_lib.Helpers.dll

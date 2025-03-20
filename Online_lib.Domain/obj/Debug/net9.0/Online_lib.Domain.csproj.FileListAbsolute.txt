@@ -1,0 +1,16 @@
+G:\Project\Online_library_Project_UTM\Online_lib.Domain\bin\Debug\net9.0\Online_lib.Domain.deps.json
+G:\Project\Online_library_Project_UTM\Online_lib.Domain\bin\Debug\net9.0\Online_lib.Domain.dll
+G:\Project\Online_library_Project_UTM\Online_lib.Domain\bin\Debug\net9.0\Online_lib.Domain.pdb
+G:\Project\Online_library_Project_UTM\Online_lib.Domain\bin\Debug\net9.0\Onlin_lib.Helpers.dll
+G:\Project\Online_library_Project_UTM\Online_lib.Domain\bin\Debug\net9.0\Onlin_lib.Helpers.pdb
+G:\Project\Online_library_Project_UTM\Online_lib.Domain\obj\Debug\net9.0\Online_lib.Domain.csproj.AssemblyReference.cache
+G:\Project\Online_library_Project_UTM\Online_lib.Domain\obj\Debug\net9.0\Online_lib.Domain.GeneratedMSBuildEditorConfig.editorconfig
+G:\Project\Online_library_Project_UTM\Online_lib.Domain\obj\Debug\net9.0\Online_lib.Domain.AssemblyInfoInputs.cache
+G:\Project\Online_library_Project_UTM\Online_lib.Domain\obj\Debug\net9.0\Online_lib.Domain.AssemblyInfo.cs
+G:\Project\Online_library_Project_UTM\Online_lib.Domain\obj\Debug\net9.0\Online_lib.Domain.csproj.CoreCompileInputs.cache
+G:\Project\Online_library_Project_UTM\Online_lib.Domain\obj\Debug\net9.0\Online_lib.Domain.sourcelink.json
+G:\Project\Online_library_Project_UTM\Online_lib.Domain\obj\Debug\net9.0\Online_l.242B1B00.Up2Date
+G:\Project\Online_library_Project_UTM\Online_lib.Domain\obj\Debug\net9.0\Online_lib.Domain.dll
+G:\Project\Online_library_Project_UTM\Online_lib.Domain\obj\Debug\net9.0\refint\Online_lib.Domain.dll
+G:\Project\Online_library_Project_UTM\Online_lib.Domain\obj\Debug\net9.0\Online_lib.Domain.pdb
+G:\Project\Online_library_Project_UTM\Online_lib.Domain\obj\Debug\net9.0\ref\Online_lib.Domain.dll
