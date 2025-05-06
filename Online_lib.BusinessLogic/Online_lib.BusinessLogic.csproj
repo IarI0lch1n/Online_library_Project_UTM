@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+	<LangVersion>10.0</LangVersion>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\202504291340099_ForceRealChange.cs" />
+    <Compile Remove="Migrations\202505021217288_InitialCreate.cs" />
+    <Compile Remove="Migrations\202505021217288_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\202505021322112_InitialCreate.cs" />
+    <Compile Remove="Migrations\202505021322112_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\Configuration.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Migrations\202505021217288_InitialCreate.resx" />
+    <EmbeddedResource Remove="Migrations\202505021322112_InitialCreate.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.5.1" />
+    <PackageReference Include="Microsoft.AspNet.Identity.EntityFramework" Version="2.2.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Online_lib.Domain\Online_lib.Domain.csproj" />
+    <ProjectReference Include="..\Online_lib.Helper\Online_lib.Helper.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DBModel\Seed\" />
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
+</Project>

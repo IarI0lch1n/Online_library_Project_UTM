@@ -1,0 +1,78 @@
+G:\Project\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\Online_lib.BusinessLogic.dll
+G:\Project\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\Online_lib.BusinessLogic.pdb
+G:\Project\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\Online_lib.Domain.dll
+G:\Project\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\Online_lib.Helper.dll
+G:\Project\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\Online_lib.Domain.pdb
+G:\Project\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\Online_lib.Helper.pdb
+G:\Project\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.csproj.AssemblyReference.cache
+G:\Project\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.GeneratedMSBuildEditorConfig.editorconfig
+G:\Project\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.AssemblyInfoInputs.cache
+G:\Project\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.AssemblyInfo.cs
+G:\Project\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.csproj.CoreCompileInputs.cache
+G:\Project\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.sourcelink.json
+G:\Project\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_l.013E8061.Up2Date
+G:\Project\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.dll
+G:\Project\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.pdb
+G:\Project\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\EntityFramework.SqlServer.dll
+G:\Project\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\EntityFramework.dll
+G:\Project\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\Microsoft.AspNet.Identity.Core.dll
+G:\Project\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\Microsoft.AspNet.Identity.EntityFramework.dll
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.dll
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.pdb
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\Online_lib.BusinessLogic.dll
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\Online_lib.BusinessLogic.pdb
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\EntityFramework.SqlServer.dll
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\EntityFramework.dll
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\Microsoft.AspNet.Identity.Core.dll
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\Microsoft.AspNet.Identity.EntityFramework.dll
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\Online_lib.Domain.dll
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\Online_lib.Helper.dll
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\Online_lib.Domain.pdb
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\Online_lib.Helper.pdb
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.csproj.AssemblyReference.cache
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.GeneratedMSBuildEditorConfig.editorconfig
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.AssemblyInfoInputs.cache
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.AssemblyInfo.cs
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.csproj.CoreCompileInputs.cache
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.sourcelink.json
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_l.013E8061.Up2Date
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\test dublicate\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.csproj.AssemblyReference.cache
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\test dublicate\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.GeneratedMSBuildEditorConfig.editorconfig
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\test dublicate\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.AssemblyInfoInputs.cache
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\test dublicate\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.AssemblyInfo.cs
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\test dublicate\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.csproj.CoreCompileInputs.cache
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\test dublicate\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.sourcelink.json
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\test dublicate\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.dll
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\test dublicate\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.pdb
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\test dublicate\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\Online_lib.BusinessLogic.dll
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\test dublicate\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\Online_lib.BusinessLogic.pdb
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\test dublicate\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\EntityFramework.SqlServer.dll
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\test dublicate\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\EntityFramework.dll
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\test dublicate\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\Microsoft.AspNet.Identity.Core.dll
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\test dublicate\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\Microsoft.AspNet.Identity.EntityFramework.dll
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\test dublicate\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\Online_lib.Domain.dll
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\test dublicate\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\Online_lib.Helper.dll
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\test dublicate\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\Online_lib.Domain.pdb
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\test dublicate\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\Online_lib.Helper.pdb
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\test dublicate\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_l.013E8061.Up2Date
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\test dublicate\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.Migrations.202504252043045_InitialCreate.resources
+G:\Бля убейте меня нахер, лишь бы эту хуйню не делать\test dublicate\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.csproj.GenerateResource.cache
+C:\Проект\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\Online_lib.BusinessLogic.dll
+C:\Проект\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\Online_lib.BusinessLogic.pdb
+C:\Проект\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\EntityFramework.SqlServer.dll
+C:\Проект\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\EntityFramework.dll
+C:\Проект\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\Microsoft.AspNet.Identity.Core.dll
+C:\Проект\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Проект\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\Online_lib.Domain.dll
+C:\Проект\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\Online_lib.Helper.dll
+C:\Проект\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\Online_lib.Domain.pdb
+C:\Проект\Online_library_Project_UTM\Online_lib.BusinessLogic\bin\Debug\net48\Online_lib.Helper.pdb
+C:\Проект\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.csproj.AssemblyReference.cache
+C:\Проект\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.GeneratedMSBuildEditorConfig.editorconfig
+C:\Проект\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.AssemblyInfoInputs.cache
+C:\Проект\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.AssemblyInfo.cs
+C:\Проект\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.csproj.CoreCompileInputs.cache
+C:\Проект\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.sourcelink.json
+C:\Проект\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_l.013E8061.Up2Date
+C:\Проект\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.dll
+C:\Проект\Online_library_Project_UTM\Online_lib.BusinessLogic\obj\Debug\net48\Online_lib.BusinessLogic.pdb

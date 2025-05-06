@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "mathhFcPngU=",
+  "success": true,
+  "projectFilePath": "G:\\Бля убейте меня нахер, лишь бы эту хуйню не делать\\Online_library_Project_UTM\\Online_lib.BusinessLogic\\Online_lib.BusinessLogic.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Gen\\.nuget\\packages\\entityframework\\6.5.1\\entityframework.6.5.1.nupkg.sha512",
+    "C:\\Users\\Gen\\.nuget\\packages\\microsoft.aspnet.identity.core\\2.2.4\\microsoft.aspnet.identity.core.2.2.4.nupkg.sha512",
+    "C:\\Users\\Gen\\.nuget\\packages\\microsoft.aspnet.identity.entityframework\\2.2.4\\microsoft.aspnet.identity.entityframework.2.2.4.nupkg.sha512"
+  ],
+  "logs": []
+}
