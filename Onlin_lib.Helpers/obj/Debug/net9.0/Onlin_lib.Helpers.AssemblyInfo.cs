@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Onlin_lib.Helpers")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f45df7b7f7395a6e32e1a0aca1d03c987528bd59")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ea0d5e3fe756f33085d037d267fdfa2bc309a32c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Onlin_lib.Helpers")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Onlin_lib.Helpers")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

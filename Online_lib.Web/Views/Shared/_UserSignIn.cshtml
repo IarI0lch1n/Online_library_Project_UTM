@@ -1,0 +1,94 @@
+﻿@model Online_lib.Domain.Entities.User.UserProfileModel
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-body">
+                    <div class="text-center">
+                        <img src="~/Images/UserAdd.png" alt="User Add" width="100" />
+                        <h2 class="mt-2">User Sign Up</h2>
+                    </div>
+
+                    @using (Html.BeginForm("Register", "Register", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(m => m.FullName)
+                                @Html.TextBoxFor(m => m.FullName, new { @class = "form-control", placeholder = "Full Name" })
+                                @Html.ValidationMessageFor(m => m.FullName)
+                            </div>
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(m => m.DateOfBirth)
+                                @Html.TextBoxFor(m => m.DateOfBirth, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+                                @Html.ValidationMessageFor(m => m.DateOfBirth)
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(m => m.ContactNumber)
+                                @Html.TextBoxFor(m => m.ContactNumber, new { @class = "form-control", type = "tel", placeholder = "Contact Number" })
+                                @Html.ValidationMessageFor(m => m.ContactNumber)
+                            </div>
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(m => m.Email)
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email", placeholder = "Email ID" })
+                                @Html.ValidationMessageFor(m => m.Email)
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                @Html.LabelFor(m => m.State)
+                                @Html.TextBoxFor(m => m.State, new { @class = "form-control", placeholder = "State" })
+                            </div>
+                            <div class="form-group col-md-4">
+                                @Html.LabelFor(m => m.City)
+                                @Html.TextBoxFor(m => m.City, new { @class = "form-control", placeholder = "City" })
+                            </div>
+                            <div class="form-group col-md-4">
+                                @Html.LabelFor(m => m.Pincode)
+                                @Html.TextBoxFor(m => m.Pincode, new { @class = "form-control", placeholder = "Pincode" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.FullAddress)
+                            @Html.TextAreaFor(m => m.FullAddress, new { @class = "form-control", rows = 2, placeholder = "Full Address" })
+                        </div>
+
+                        <div class="text-center my-3">
+                            <span class="badge bg-info text-white p-2">Login Credentials</span>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                @Html.Label("User ID")
+                                @Html.TextBoxFor(m => m.UserID, new { @class = "form-control", placeholder = "User ID" })
+                            </div>
+                            <div class="form-group col-md-6">
+                                @Html.Label("Password")
+                                @Html.PasswordFor(m => m.NewPassword, new { @class = "form-control", placeholder = "Password" })
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success btn-lg w-100">Sign Up</button>
+                        </div>
+                    }
+
+                    @if (ViewBag.Message != null)
+                    {
+                        <div class="alert alert-success mt-3 text-center">
+                            @ViewBag.Message
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
