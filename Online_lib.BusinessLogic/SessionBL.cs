@@ -1,4 +1,5 @@
-﻿using Online_lib.BusinessLogic.Core;
+using Online_lib.BusinessLogic.Core;
+using Online_lib.BusinessLogic.DBModel;
 using Online_lib.BusinessLogic.Interface;
 using Online_lib.Domain.Entities.User;
 using System;
@@ -11,23 +12,31 @@ namespace Online_lib.BusinessLogic
 {
     public class SessionBL : ISession
     {
+
         public UserLoginResult UserLogin(ULoginData data)
         {
-            // Заглушка, временная логика — можешь потом заменить на настоящую проверку из БД
-            if (data.Name == "admin" && data.Password == "admin")
+            using (var db = new UserContext())
             {
+                var user = db.Users.FirstOrDefault(u =>
+                    u.Username == data.Name && u.Password == data.Password);
+
+                if (user != null)
+                {
+                    return new UserLoginResult
+                    {
+                        Status = true,
+                        StatusMsg = $"Добро пожаловать, {user.Username}!"
+                    };
+                }
+
                 return new UserLoginResult
                 {
-                    Status = true,
-                    StatusMsg = "Добро пожаловать, админ!"
+                    Status = false,
+                    StatusMsg = "Неверный логин или пароль."
                 };
             }
-
-            return new UserLoginResult
-            {
-                Status = false,
-                StatusMsg = "Неверный логин или пароль."
-            };
         }
+
+
     }
 }
