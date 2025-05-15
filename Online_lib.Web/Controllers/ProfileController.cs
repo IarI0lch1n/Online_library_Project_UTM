@@ -1,59 +1,88 @@
-﻿using Online_lib.BusinessLogic.DBModel;
-using Online_lib.Domain.Entities.User;
+using System;
 using System.Linq;
 using System.Web.Mvc;
+using Online_lib.Domain.Entities.User;
+using Online_lib.BusinessLogic.DBModel;
 
 namespace Online_lib.Web.Controllers
 {
     public class ProfileController : Controller
     {
-        private readonly UserContext db = new UserContext();
+        private UserContext db = new UserContext();
 
-        [Authorize]
-        [HttpGet]
-        public ActionResult Index()
+        public ActionResult Dashboard()
         {
-            var username = User.Identity.Name;
-            var user = db.Users.FirstOrDefault(u => u.Username == username);
+            if (Session["UserID"] == null)
+                return RedirectToAction("Index", "Login");
 
-            if (user == null) return RedirectToAction("Login", "Login");
+            int userId = (int)Session["UserID"];
 
-            var model = new UserProfileModel
+            using (var db = new UserContext())
             {
-                FullName = user.Username,
-                Email = user.Email,
-                UserID = user.Id,
-               ////////////// /// Остальные поля можно расширить/////////////
-            };
+                var user = db.Users.Find(userId);
+                if (user == null)
+                    return HttpNotFound();
 
-            return View(model);
+                var model = new UserProfileModel
+                {
+                    UserID = user.Id,
+                    FullName = user.Username,
+                    DateOfBirth = user.DateOfBirth,
+                    ContactNumber = user.ContactNumber,
+                    Email = user.Email,
+                    State = user.State,
+                    City = user.City,
+                    Pincode = user.Pincode,
+                    FullAddress = user.FullAddress,
+
+                    Books = db.UserBooks
+                              .Where(b => b.UserId == user.Id)
+                              .ToList()
+                };
+
+                return View("~/Views/Shared/_UserProfile.cshtml", model);
+            }
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Index(UserProfileModel model)
+        public ActionResult UpdateProfile(UserProfileModel model)
         {
-            if (!ModelState.IsValid) return View(model);
+            var user = db.Users.Find(model.UserID);
 
-            var user = db.Users.FirstOrDefault(u => u.Id == model.UserID);
-            if (user == null) return RedirectToAction("Login", "Login");
-
-            //////////////// Проверка пароля/////////////////////
-            if (user.Password != model.OldPassword)
+            if (user != null)
             {
-                ModelState.AddModelError("", "Неверный старый пароль.");
-                return View(model);
+                user.Username = model.FullName;
+                user.DateOfBirth = model.DateOfBirth;
+                user.ContactNumber = model.ContactNumber;
+                user.Email = model.Email;
+                user.State = model.State;
+                user.City = model.City;
+                user.Pincode = model.Pincode;
+                user.FullAddress = model.FullAddress;
+
+                db.SaveChanges();
             }
 
-            ////////////// Обновление данных////////////////////
-            user.Email = model.Email;
-            user.Password = model.NewPassword ?? user.Password;
-            user.Username = model.FullName;
+            return RedirectToAction("Dashboard");
+        }
 
-            db.SaveChanges();
+        [HttpPost]
+        public ActionResult ChangePassword(UserProfileModel model)
+        {
+            var user = db.Users.Find(model.UserID);
 
-            ViewBag.Message = "Профиль обновлён!";
-            return View(model);
+            if (user != null && model.OldPassword == user.Password)
+            {
+                user.Password = model.NewPassword;
+                db.SaveChanges();
+                TempData["SuccessMessage"] = "Пароль успешно изменён.";
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "Старый пароль неверен.";
+            }
+
+            return RedirectToAction("Dashboard");
         }
     }
 }
