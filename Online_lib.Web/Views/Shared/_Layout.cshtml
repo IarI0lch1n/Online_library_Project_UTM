@@ -1,4 +1,4 @@
-﻿@using System.Web.Optimization
+@using System.Web.Optimization
 
 <!DOCTYPE html>
 <html>
@@ -10,6 +10,9 @@
     <title>Online library | @ViewBag.Title</title>
     <link rel="icon" href="~/Images/Books.png" type="image/x-icon">
     <link href="~/CSS/StyleSheet.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet" type="text/css">
     @Styles.Render("~/bundles/font-awesome/css")
@@ -28,16 +31,24 @@
     @Styles.Render("~/bundles/main/css")
 
 
+
+
 </head>
 
 <body>
     <div class="wrapper">
         <nav>
             @Html.Partial("_Header")
+
+
         </nav>
         <section class="content">
             @RenderBody()
-            @Html.Partial(Session["HomepageView"] as string ?? "_Homepage")
+            @if (ViewContext.RouteData.Values["controller"].ToString() == "Home" && ViewContext.RouteData.Values["action"].ToString() == "Index")
+            {
+                @Html.Partial(Session["HomepageView"] as string ?? "_Homepage")
+            }
+
             @Html.Partial("_Footer")
         </section>
         @RenderSection("scripts", required: false)
