@@ -1,157 +1,88 @@
-﻿<div class="container-fluid">
+@model Tuple<List<Online_lib.Domain.Entities.User.UDbTable>, Online_lib.Domain.Entities.User.UDbTable>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var users = Model.Item1;
+    var user = Model.Item2;
+}
+
+<div class="container-fluid">
     <div class="row">
+
+        <!-- Левая часть -->
         <div class="col-md-5">
             <div class="card">
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col text-center">
-                            <h4>Member Details</h4>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col text-center">
-                            <img width="100px" src="~/Images/Admin.png" />
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
-                            <hr />
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-3">
-                            <label>Member ID</label>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <input class="form-control" id="MemberID" type="text" placeholder="Member ID" />
-                                    <button class="btn btn-primary">Go</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <label>Full Name</label>
-                            <div class="form-group">
-                                <input class="form-control" id="FullName" type="text" placeholder="Full Name" readonly="True" />
-                            </div>
-                        </div>
-
-                        <div class="col-md-5">
-                            <label>Account Status</label>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <input class="form-control mr-1" id="AccountStatus" type="text" placeholder="Account status" readonly="True" />
-                                    <button class="btn btn-success mr-1"><img width="15px" src="~/Images/Galockha.png" /></button>
-                                    
-                                    <button class="btn btn-warning mr-1"><img width="15px" src="~/Images/Pause.png" /></button>
-                                    <button class="btn btn-danger mr-1"><img width="15px" src="~/Images/X.png" /></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-3">
-                            <label>Date of Birth</label>
-                            <input class="form-control" id="DOB" type="text" placeholder="DOB" readonly="True" />
-                        </div>
-
-                        <div class="col-md-4">
-                            <label>Contact No</label>
-                            <input class="form-control" id="ContactNo" type="text" placeholder="Contact No" readonly="True" />
-                        </div>
-
-                        <div class="col-md-5">
-                            <label>Email ID</label>
-                            <input class="form-control" id="Email" type="text" placeholder="Email ID" readonly="True" />
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4">
-                            <label>State</label>
-                            <input class="form-control" id="State" type="text" placeholder="State" readonly="True" />
-                        </div>
-
-                        <div class="col-md-4">
-                            <label>City</label>
-                            <input class="form-control" id="City" type="text" placeholder="City" readonly="True" />
-                        </div>
-
-                        <div class="col-md-4">
-                            <label>Pin Code</label>
-                            <input class="form-control" id="PinCode" type="text" placeholder="Pin code" readonly="True" />
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <label>Full Postal Address</label>
-                            <textarea class="form-control" id="Address" placeholder="User's home" rows="2" readonly="True"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-8 mx-auto">
-                            <hr />
-                            <button class="btn btn-danger w-100" type="button">Delete user permanently</button>
-                            <hr />
-                        </div>
-                    </div>
+                    <h4 class="text-center">All users</h4>
+                    <table class="table table-bordered table-striped mt-3">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var u in users)
+                            {
+                                <tr>
+                                    <td>@u.Id</td>
+                                    <td>@u.Username</td>
+                                    <td>
+                                        <a class="btn btn-info btn-sm" href="@Url.Action("ManageUsers", "Member", new { selectedId = u.Id })">Info</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
                 </div>
             </div>
-
-            <a href="@Url.Action("ChangeHomepage", "Home", new { homepage = "_Homepage" })">Back to Home Page</a>
-            <br /><br />
         </div>
 
+        <!-- Правая часть -->
         <div class="col-md-7">
             <div class="card">
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col text-center">
-                            <h4>Member List</h4>
-                        </div>
-                    </div>
+                    @if (user != null)
+                    {
+                        <h4 class="text-center">Information about user</h4>
+                        <hr />
+                        <dl class="row">
+                            <dt class="col-sm-4">ID</dt>
+                            <dd class="col-sm-8">@user.Id</dd>
 
-                    <div class="row">
-                        <div class="col">
-                            <hr />
-                        </div>
-                    </div>
+                            <dt class="col-sm-4">Name</dt>
+                            <dd class="col-sm-8">@user.Username</dd>
 
-                    <div class="row">
-                        <div class="col">
-                            <table class="table table-striped table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Member ID</th>
-                                        <th>Full Name</th>
-                                        <th>Email</th>
-                                        <th>Contact No</th>
-                                        <th>Account Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @* Пример итерации по списку *@
-                                    @* @foreach (var member in Model.Members) { *@
-                                    @* <tr> *@
-                                    @* <td>@member.MemberID</td> *@
-                                    @* <td>@member.FullName</td> *@
-                                    @* <td>@member.Email</td> *@
-                                    @* <td>@member.ContactNo</td> *@
-                                    @* <td>@member.AccountStatus</td> *@
-                                    @* </tr> *@
-                                    @* } *@
-                                </tbody>
-                            </table>
+                            <dt class="col-sm-4">Email</dt>
+                            <dd class="col-sm-8">@user.Email</dd>
+
+                            <dt class="col-sm-4">Number</dt>
+                            <dd class="col-sm-8">@user.ContactNumber</dd>
+
+                            <dt class="col-sm-4">Role</dt>
+                            <dd class="col-sm-8">@user.Role</dd>
+
+                            <dt class="col-sm-4">Status</dt>
+                            <dd class="col-sm-8">@(user.IsBlocked ? "Blocked" : "Active")</dd>
+                        </dl>
+
+                        <div class="text-center">
+                            <a class="btn btn-success" href="@Url.Action("ChangeRole", "Member", new { id = user.Id })">
+                                @(user.Role == Online_lib.Domain.Enums.UserRole.Admin ? "Decrease to user" : "Promote to admin")
+                            </a>
+                            <a class="btn btn-warning" href="@Url.Action("ToggleBlock", "Member", new { id = user.Id })">
+                                @(user.IsBlocked ? "Unblock" : "Block")
+                            </a>
+                            <a class="btn btn-danger" href="@Url.Action("DeleteUser", "Member", new { id = user.Id })" onclick="return confirm('Are you sure you want to delete this user?');">Delete this account</a>
                         </div>
-                    </div>
+                    }
+                    else
+                    {
+                        <h5 class="text-center text-muted">Choose the user on the left side.</h5>
+                    }
                 </div>
             </div>
         </div>
+
     </div>
 </div>
