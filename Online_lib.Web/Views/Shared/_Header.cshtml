@@ -1,4 +1,4 @@
-﻿@{
+@{
     var homepageView = Session["HomepageView"] as string ?? "_Homepage";
 }
 
@@ -14,8 +14,7 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <!-- Для Bootstrap 4 -->
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item active">
                         <a class="nav-link btn" href="@Url.Action("ChangeHomepage", "Home", new { homepage = "_Homepage" })">Home</a>
                     </li>
@@ -27,23 +26,49 @@
                     </li>
                 </ul>
 
-                <ul class="navbar-nav right-section">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="@Url.Action("ChangeHomepage", "Home", new { homepage = "_BookInventory" })" runat="server">View Books</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link btn" href="@Url.Action("ChangeHomepage", "Home", new { homepage = "_UserLogin" })" runat="server" >User Login</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link btn" href="@Url.Action("ChangeHomepage", "Home", new { homepage = "_UserSignIn" })" runat="server">Sign Up</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#" runat="server">Logout</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link btn" href="@Url.Action("ChangeHomepage", "Home", new { homepage = "_UserProfile" })" runat="server">Hello user!</a>
-                    </li>
-                </ul>
+                <div>
+                    <ul class="navbar-nav ms-auto">
+                        @if (Session["UserRole"]?.ToString() == "Admin")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Index", "Book")">Book Inventory</a>
+                            </li>
+                        }
+                        else if (Session["UserRole"]?.ToString() == "User" || Session["UserRole"]?.ToString() == null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Index", "Book")">Issue Books</a>
+                            </li>
+                        }
+                        @if (Session["UserFullName"] == null)
+                        {
+                            <li class="nav-item active">
+                                <a class="nav-link btn" href="@Url.Action("ChangeHomepage", "Home", new { homepage = "_UserLogin" })">User Login</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link btn" href="@Url.Action("ChangeHomepage", "Home", new { homepage = "_UserSignIn" })">Sign Up</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item active">
+                                <a class="nav-link btn" href="@Url.Action("Logout", "Login")">Logout</a>
+                            </li>
+                            <li class="nav-item active d-flex align-items-center">
+                                @{
+                                    var role = Session["UserRole"] as string;
+                                    var iconPath = role == "Admin"
+                                        ? Url.Content("~/Images/Admin.png")
+                                        : Url.Content("~/Images/User.png");
+                                }
+                                <img src="@iconPath" alt="User" width="32" height="32" style="margin-right: 8px;" />
+                                <a class="nav-link btn" href="@Url.Action("Dashboard", "Profile")">
+                                    @Session["UserFullName"]
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
             </div>
         </nav>
     </div>
