@@ -1,27 +1,63 @@
-﻿<div id="footer1" class="container-fluid">
+@using Online_lib.BusinessLogic.DBModel
+
+@{
+    int? role = null;
+    int? userId = Session["UserID"] as int?;
+    if (userId.HasValue)
+    {
+        using (var db = new UserContext())
+        {
+            var user = db.Users.Find(userId.Value);
+            if (user != null)
+            {
+                role = (int)user.Role;
+            }
+        }
+    }
+}
+
+<div id="footer1" class="container-fluid">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
             <p>
-                <a class="footerlinks btn" href="@Url.Action("ChangeHomepage", "Home", new { homepage = "_AdminLogin" })" runat="server">Admin Login</a>
-                &nbsp;
-                <a class="footerlinks btn" href="@Url.Action("ChangeHomepage", "Home", new { homepage = "_AdminAuthorManagement" })"  runat="server">Author Management</a>
-                &nbsp;
-                <a class="footerlinks btn" href="@Url.Action("ChangeHomepage", "Home", new { homepage = "_AdminPublisherManagement" })" runat="server">Publisher Management</a>
-                &nbsp;
-                <a class="footerlinks" href="@Url.Action("ChangeHomepage", "Home", new { homepage = "_BookInventory" })" runat="server">Book Inventory</a>
-                &nbsp;
-                <a class="footerlinks btn" href="@Url.Action("ChangeHomepage", "Home", new { homepage = "_AdminBookingIssuing" })" runat="server">Book Issuing</a>
-                &nbsp;
-                <a class="footerlinks btn" href="@Url.Action("ChangeHomepage", "Home", new { homepage = "_MemberManagement" })" runat="server">Member Management</a>
-                &nbsp;
+                @if (role == 1)
+                {
+                    <a class="footerlinks btn" href="@Url.Action("ChangeHomepage", "Home", new { homepage = "_AdminLogin" })">Admin Login</a>
+                    @Html.Raw("&nbsp;")
+                    <a class="footerlinks btn" href="@Url.Action("ChangeHomepage", "Home", new { homepage = "_AdminAuthorManagement" })">Author Management</a>
+                    @Html.Raw("&nbsp;")
+                    <a class="footerlinks btn" href="@Url.Action("ChangeHomepage", "Home", new { homepage = "_AdminPublisherManagement" })">Publisher Management</a>
+                    @Html.Raw("&nbsp;")
+                    <a class="footerlinks" href="@Url.Action("ChangeHomepage", "Home", new { homepage = "_BookInventory" })">Book Inventory</a>
+                    @Html.Raw("&nbsp;")
+                    <a class="footerlinks btn" href="@Url.Action("ChangeHomepage", "Home", new { homepage = "_AdminBookingIssuing" })">Book Issuing</a>
+                    @Html.Raw("&nbsp;")
+                    <a class="footerlinks btn"  href="@Url.Action("ManageUsers", "Member")">Member Management</a>
+                }
+                else if (role == 0)
+                {
+                    <a class="footerlinks btn" href="@Url.Action("ChangeHomepage", "Home", new { homepage = "_BookInventory" })">Browse Books</a>
+                    @Html.Raw("&nbsp;")
+                    <a class="footerlinks btn" href="@Url.Action("ChangeHomepage", "Home", new { homepage = "_UserProfile" })">My Profile</a>
+                }
+                else
+                {
+                    <span class="text-muted">You are browsing as guest.</span>
+                }
             </p>
         </div>
     </div>
 </div>
+
 <div id="footer2" class="container-fluid">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-            <p style="color:whitesmoke">&copy All right Reserved. <a class="footerlinks" href="https://github.com/IarI0lch1n/Online_library_Project_UTM" target="_blank">Iolchin I. & Griceanii A. from TI-238</a></p>
+            <p style="color:whitesmoke">
+                &copy; All rights reserved.
+                <a class="footerlinks" href="https://github.com/IarI0lch1n/Online_library_Project_UTM" target="_blank">
+                    Iolchin I. & Griceanii A. from TI-238
+                </a>
+            </p>
         </div>
     </div>
 </div>
