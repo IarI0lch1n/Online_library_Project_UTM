@@ -9,7 +9,6 @@ namespace Online_lib.BusinessLogic.Interface
 {
     public interface ISession
     {
-        // 🔐 Метод для авторизации пользователя
         UserLoginResult UserLogin(ULoginData data);
     }
 }
