@@ -1,4 +1,10 @@
-﻿<div class="container-fluid">
+@model Online_lib.Domain.Entities.User.UserProfileModel
+
+@{
+    ViewBag.Title = "User Profile";
+}
+
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-5">
             <div class="card">
@@ -13,65 +19,60 @@
                         <div class="col text-center">
                             <h4>Your Profile</h4>
                             <span>Account Status - </span>
-                            <!--
-                                <span class="badge rounded-pill bg-info p-2 text-white">Model.AccountStatus</span>
-                            -->
                         </div>
                     </div>
 
                     <hr />
 
-                    <form method="post">
+                    @using (Html.BeginForm("UpdateProfile", "Profile", FormMethod.Post))
+                    {
+                        @Html.HiddenFor(m => m.UserID)
+
                         <div class="row">
                             <div class="col-md-6">
                                 <label>Full Name</label>
-                                <input asp-for="FullName" class="form-control" placeholder="Full Name" />
+                                @Html.TextBoxFor(m => m.FullName, new { @class = "form-control" })
                             </div>
 
                             <div class="col-md-6">
                                 <label>Date of Birth</label>
-                                <input asp-for="DateOfBirth" class="form-control" type="date" />
+                                @Html.TextBoxFor(m => m.DateOfBirth, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-6">
                                 <label>Contact Number</label>
-                                <input asp-for="ContactNumber" class="form-control" type="tel" />
+                                @Html.TextBoxFor(m => m.ContactNumber, new { @class = "form-control", type = "tel" })
                             </div>
 
                             <div class="col-md-6">
                                 <label>Email ID</label>
-                                <input asp-for="Email" class="form-control" type="email" />
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email" })
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-4">
                                 <label>State</label>
-                                <select asp-for="State" class="form-control">
-                                    <option>Select</option>
-                                    <option>Moldova</option>
-                                    <option>Romania</option>
-                                    <option>Ukraine</option>
-                                </select>
+                                @Html.TextBoxFor(m => m.State, new { @class = "form-control" })
                             </div>
 
                             <div class="col-md-4">
                                 <label>City</label>
-                                <input asp-for="City" class="form-control" />
+                                @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
                             </div>
 
                             <div class="col-md-4">
                                 <label>Pincode</label>
-                                <input asp-for="Pincode" class="form-control" />
+                                @Html.TextBoxFor(m => m.Pincode, new { @class = "form-control" })
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col">
                                 <label>Full Address</label>
-                                <textarea asp-for="FullAddress" class="form-control" rows="2"></textarea>
+                                @Html.TextAreaFor(m => m.FullAddress, new { @class = "form-control", rows = 2 })
                             </div>
                         </div>
 
@@ -86,29 +87,29 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <label>User ID</label>
-                                <input asp-for="UserID" class="form-control" readonly />
+                                @Html.TextBoxFor(m => m.UserID, new { @class = "form-control", @readonly = "readonly" })
                             </div>
 
                             <div class="col-md-4">
                                 <label>Old Password</label>
-                                <input asp-for="OldPassword" class="form-control" type="password" />
+                                @Html.PasswordFor(m => m.OldPassword, new { @class = "form-control" })
                             </div>
 
                             <div class="col-md-4">
                                 <label>New Password</label>
-                                <input asp-for="NewPassword" class="form-control" type="password" />
+                                @Html.PasswordFor(m => m.NewPassword, new { @class = "form-control" })
                             </div>
                         </div>
 
                         <hr />
 
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary btn-lg w-50">Update</button>
+                            <button type="submit" formaction="@Url.Action("UpdateProfile", "Profile")" class="btn btn-primary btn-lg w-50">Update Profile</button>
+                            <button type="submit" formaction="@Url.Action("ChangePassword", "Profile")" class="btn btn-warning btn-lg w-50 mt-2">Change Password</button>
                         </div>
-                    </form>
+                    }
 
                     <hr />
-
                     <a href="@Url.Action("ChangeHomepage", "Home", new { homepage = "_Homepage" })">Back to Home Page</a>
                 </div>
             </div>
@@ -119,7 +120,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col text-center">
-                            <img width="100px" src="Images/Books.png" alt="Books" />
+                            <img width="100px" src="~/Images/Books.png" alt="Books" />
                         </div>
                     </div>
 
@@ -142,20 +143,27 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!--
+                            @if (Model?.Books != null)
+                            {
                                 foreach (var book in Model.Books)
                                 {
                                     <tr>
-                                        <th>book.Id</th>
-                                        <td>book.Title</td>
-                                        <td>book.Author</td>
-                                        <td>book.Status</td>
+                                        <td>@book.Id</td>
+                                        <td>@book.Title</td>
+                                        <td>@book.Author</td>
+                                        <td>@book.Status</td>
                                     </tr>
                                 }
-                            </tbody>
-                            -->
-                    </table>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="4" class="text-center text-muted">No books found.</td>
+                                </tr>
+                            }
 
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
