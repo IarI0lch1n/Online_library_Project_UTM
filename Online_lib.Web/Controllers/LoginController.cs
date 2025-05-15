@@ -1,67 +1,108 @@
-﻿using Online_lib.BusinessLogic;
-using Online_lib.BusinessLogic.Interface;
-using Online_lib.Domain.Entities.User;
 using System;
+using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using Online_lib.Domain.Entities.User;
+using Online_lib.BusinessLogic.DBModel;
+using System.Security.Cryptography;
+using System.Text;
+
 
 namespace Online_lib.Web.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly ISession _session;
+        private UserContext db = new UserContext();
 
-        public LoginController()
-        {
-            _session = new SessionBL();
-        }
-
-        // POST: /Login/Login
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Login(ULoginData login)
-        {
-            if (ModelState.IsValid)
-            {
-                // Сохраняем IP и дату входа
-                login.LoginIp = Request.UserHostAddress;
-                login.LoginDateTime = DateTime.Now;
-
-                // Передаём данные в бизнес-логику
-                var userLogin = _session.UserLogin(login);
-
-                if (userLogin.Status)
-                {
-                    // Успешный вход — создаём авторизационную куку
-                    FormsAuthentication.SetAuthCookie(login.Name, false);
-
-                    // Перенаправляем на домашнюю страницу
-                    return RedirectToAction("ChangeHomepage", "Home", new { homepage = "_Homepage" });
-                }
-                else
-                {
-                    // Неверный логин/пароль — показываем ошибку
-                    ViewBag.Error = userLogin.StatusMsg;
-                    return View("Index", login); // предполагаем, что есть Index.cshtml
-                }
-            }// Если модель невалидна — возвращаем её обратно
-            return View("Index", login);
-        }
-
-        // GET: /Login/Index
-        [HttpGet]
         public ActionResult Index()
         {
-            return View(new ULoginData());
+            return View("~/Views/Shared/_UserLogin.cshtml", new ULoginData());
         }
 
-        // GET: /Login/Logout
-        [HttpGet]
+        [HttpPost]
+        public ActionResult Login(ULoginData login)
+        {
+            var userLogin = CheckLoginData(login);
+
+            if (userLogin.Status)
+            {
+                FormsAuthentication.SetAuthCookie(login.Name, false);
+
+                var user = db.Users.FirstOrDefault(u =>
+                    (u.Email == login.Name || u.ContactNumber == login.Name) &&
+                    u.Password == login.Password);
+
+                if (user != null)
+                {
+                    string guidToken = Guid.NewGuid().ToString();
+                    string secretKey = "SuperStrongKey123!"; // желательно вынести в web.config
+
+                    string hmacToken = GenerateHmac(guidToken, secretKey);
+
+                    var cookie = new HttpCookie("LoginToken", hmacToken)
+                    {
+                        Expires = DateTime.Now.AddDays(7),
+                        HttpOnly = true
+                    };
+                    Response.Cookies.Add(cookie);
+
+                    user.LoginToken = guidToken;
+                    db.SaveChanges();
+
+                    Session["UserID"] = user.Id;
+                    Session["UserFullName"] = user.Username;
+                    Session["UserRole"] = user.Role;
+                }
+
+                return RedirectToAction("Dashboard", "Profile");
+            }
+
+            ViewBag.Error = "Неверный логин или пароль";
+            return View("~/Views/Shared/_UserLogin.cshtml", login);
+        }
+
+        public ULoginData CheckLoginData(ULoginData data)
+        {
+            var user = db.Users.FirstOrDefault(u =>
+                (u.Email == data.Name || u.ContactNumber == data.Name) &&
+                u.Password == data.Password);
+
+            return new ULoginData
+            {
+                Name = data.Name,
+                Password = data.Password,
+                Status = user != null
+            };
+        }
+
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
+            Session.Clear();
+            Session.Abandon();
+
+            if (Request.Cookies["LoginToken"] != null)
+            {
+                var cookie = new HttpCookie("LoginToken")
+                {
+                    Expires = DateTime.Now.AddDays(-1)
+                };
+                Response.Cookies.Add(cookie);
+            }
+
             return RedirectToAction("Index", "Home");
+        }
+        private string GenerateHmac(string input, string key)
+        {
+            var keyBytes = Encoding.UTF8.GetBytes(key);
+            var inputBytes = Encoding.UTF8.GetBytes(input);
+
+            using (var hmac = new HMACSHA256(keyBytes))
+            {
+                var hashBytes = hmac.ComputeHash(inputBytes);
+                return Convert.ToBase64String(hashBytes);
+            }
         }
     }
 }
