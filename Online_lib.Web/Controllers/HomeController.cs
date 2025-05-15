@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,12 +17,9 @@ namespace Online_lib.Web.Controllers
         [HttpGet]
         public ActionResult ChangeHomepage(string homepage)
         {
-            if (!string.IsNullOrEmpty(homepage))
-            {
-                Session["HomepageView"] = homepage; 
-            }
-
-            return RedirectToAction("Index", "Home"); 
+            Session["HomepageView"] = homepage;
+            return RedirectToAction("Index", "Home");
         }
+
     }
 }
