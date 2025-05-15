@@ -1,4 +1,4 @@
-﻿using Online_lib.Domain.Entities.User;
+using Online_lib.Domain.Entities.User;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -13,6 +13,11 @@ namespace Online_lib.BusinessLogic.DBModel
         public UserContext() : base("name=Lib_BD")
         {
         }
+
+        public DbSet<UserBook> UserBooks { get; set; }
+
+
+
 
         public virtual DbSet<UDbTable> Users { get; set; }
     }
