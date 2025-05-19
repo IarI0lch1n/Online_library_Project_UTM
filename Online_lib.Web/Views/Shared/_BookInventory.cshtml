@@ -1,17 +1,7 @@
-@model Online_lib.Domain.Entities.User.BookViewModel
+@model Online_lib.Domain.Entities.User.BookInventoryViewModel
 
-
-
-@if (Model != null)
+@using (Html.BeginForm("AddBook", "Book", FormMethod.Post, new { enctype = "multipart/form-data", autocomplete = "off" }))
 {
-    <div class="alert alert-info">
-        <strong>Отладка:</strong> Название книги: @Model.BookName
-    </div>
-}
-
-
-<form asp-action="AddBook" asp-controller="Book" method="post" enctype="multipart/form-data">
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-5">
@@ -38,81 +28,80 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <label>Book ID</label>
-                                <input type="text" class="form-control" asp-for="Id" placeholder="Book ID" />
+                                <input type="text" class="form-control" name="FormData.Id" placeholder="Book ID" />
                             </div>
                             <div class="col-md-9">
                                 <label>Book Name</label>
-                                <input asp-for="BookName" class="form-control" />
-
+                                <input name="FormData.BookName" class="form-control" />
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-4">
                                 <label>Language</label>
-                                <input class="form-control" asp-for="Language" />
+                                <input class="form-control" name="FormData.Language" />
                             </div>
                             <div class="col-md-4">
                                 <label>Publisher ID</label>
-                                <input type="number" class="form-control" asp-for="PublisherId" />
+                                <input type="number" class="form-control" name="FormData.PublisherId" />
                             </div>
                             <div class="col-md-4">
                                 <label>Author ID</label>
-                                <input type="number" class="form-control" asp-for="AuthorId" />
+                                <input type="number" class="form-control" name="FormData.AuthorId" />
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-6">
                                 <label>Publisher Date</label>
-                                <input type="date" class="form-control" asp-for="PublisherDate" />
+                                <input type="date" class="form-control" name="FormData.PublisherDate" />
                             </div>
                             <div class="col-md-6">
                                 <label>Genre</label>
-                                <input type="text" class="form-control" asp-for="Genres" />
+                                <input type="text" class="form-control" name="FormData.Genres" />
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-4">
                                 <label>Edition</label>
-                                <input type="text" class="form-control" asp-for="Edition" />
+                                <input type="text" class="form-control" name="FormData.Edition" />
                             </div>
                             <div class="col-md-4">
                                 <label>Price</label>
-                                <input type="number" class="form-control" asp-for="Price" />
+                                <input type="number" class="form-control" name="FormData.Price" />
                             </div>
                             <div class="col-md-4">
                                 <label>Pages</label>
-                                <input type="number" class="form-control" asp-for="Pages" />
+                                <input type="number" class="form-control" name="FormData.Pages" />
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-4">
                                 <label>Actual Stock</label>
-                                <input type="number" class="form-control" asp-for="ActualStock" />
+                                <input type="number" class="form-control" name="FormData.ActualStock" />
                             </div>
                             <div class="col-md-4">
                                 <label>Current Stock</label>
-                                <input type="number" class="form-control" asp-for="CurrentStock" readonly />
+                                <input type="number" class="form-control" name="FormData.CurrentStock" readonly />
                             </div>
                             <div class="col-md-4">
                                 <label>Issued Books</label>
-                                <input type="number" class="form-control" asp-for="IssuedBooks" readonly />
+                                <input type="number" class="form-control" name="FormData.IssuedBooks" readonly />
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-12">
                                 <label>Book Description</label>
-                                <textarea class="form-control" asp-for="Description" rows="2"></textarea>
+                                <textarea class="form-control" name="FormData.Description" rows="2"></textarea>
                             </div>
                         </div>
 
                         <div class="row mt-3">
                             <div class="col-4">
-                                <button type="submit" class="btn btn-success">Add</button>
+                                <button type="submit" class="btn btn-success" name="action" value="add">Add</button>
                             </div>
                             <div class="col-4">
                                 <button type="submit" class="btn btn-warning">Update</button>
@@ -146,7 +135,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- books rendering will go here if needed -->
+                                @foreach (var item in Model.Books)
+                                {
+                                    <tr>
+                                        <td>@item.Id</td>
+                                        <td>@item.BookName</td>
+                                        <td>@item.Author</td>
+                                        <td>@item.Genres</td>
+                                        <td>@item.CurrentStock</td>
+                                    </tr>
+                                }
                             </tbody>
                         </table>
                     </div>
@@ -154,4 +152,4 @@
             </div>
         </div>
     </div>
-</form>
+}
