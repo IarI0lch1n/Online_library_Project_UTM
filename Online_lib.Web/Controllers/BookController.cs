@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Antlr.Runtime.Misc;
 using Online_lib.BusinessLogic.DBModel;
 using Online_lib.Domain.Entities.User;
 
@@ -14,93 +15,70 @@ namespace Online_lib.Web.Controllers
     {
         private UserContext db = new UserContext();
 
-        public ActionResult Index()
-        {
-            if (Session["UserRole"] == null)
-                return RedirectToAction("Index", "Login");
-
-            string role = Session["UserRole"].ToString();
-
-            if (role == "Admin")
-            {
-                var books = db.UserBooks.ToList();
-                return View("~/Views/Shared/_BookInventory.cshtml", books);
-            }
-
-            if (role == "User")
-            {
-                int userId = (int)Session["UserID"];
-                var userBooks = db.UserBooks.Where(b => b.UserId == userId).ToList();
-                return View("~/Views/Shared/_AdminBookingIssuing.cshtml", userBooks);
-            }
-
-            return RedirectToAction("Index", "Login");
-        }
+        
 
         [HttpPost]
-        public ActionResult AddBook(BookViewModel model, HttpPostedFileBase bookFile)
+        public ActionResult AddBook(BookInventoryViewModel model, HttpPostedFileBase bookFile)
         {
+            var data = model.FormData;
+
+
             if (bookFile != null && bookFile.ContentLength > 0)
             {
                 var fileName = Path.GetFileName(bookFile.FileName);
                 var path = Path.Combine(Server.MapPath("~/UploadedBooks/"), fileName);
                 bookFile.SaveAs(path);
+                var filePath = "/UploadedBooks/" + fileName;
+
 
                 var book = new UserBook
                 {
-                    BookName = model.BookName,
-                    Description = model.Description,
-                    Edition = model.Edition,
-                    Price = model.Price,
-                    Pages = model.Pages,
-                    Language = model.Language,
-                    Genres = model.Genres,
-                    PublisherId = model.PublisherId,
-                    AuthorId = model.AuthorId,
-                    PublisherDate = model.PublisherDate ?? DateTime.Now,
-                    ActualStock = model.ActualStock,
-                    CurrentStock = model.ActualStock,
+                    BookName = data.BookName,
+                    Title = data.BookName ?? "Без названия",
+                    Author = "Автор по умолчанию",
+                    Description = data.Description,
+                    Edition = data.Edition,
+                    Price = data.Price,
+                    Pages = data.Pages,
+                    Language = data.Language,
+                    Genres = data.Genres,
+                    PublisherId = data.PublisherId,
+                    AuthorId = data.AuthorId,
+                    PublisherDate = data.PublisherDate ?? DateTime.Now,
+                    ActualStock = data.ActualStock,
+                    CurrentStock = data.ActualStock,
                     IssuedBooks = 0,
                     FileName = fileName,
-                    FilePath = "/UploadedBooks/" + fileName,
-                    Status = "Available"
+                    FilePath = filePath,
+                    Status = "Available",
+                    UserId = null
                 };
 
-                try
-                {
-                    db.UserBooks.Add(book);
-                    db.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    return Content("Ошибка при сохранении: " + ex.Message);
-                }
 
+                db.UserBooks.Add(book);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
 
             return RedirectToAction("ChangeHomepage", "Home", new { homepage = "_BookInventory" });
         }
 
-
-
-
-
-
         public ActionResult BookInventory()
         {
-            // возможно, нужно вернуть представление с моделью
-            return View();
+            var model = new BookInventoryViewModel
+            {
+                Books = db.UserBooks.ToList()
+            };
+
+            return View(model);
         }
+
 
         [HttpPost]
         public ActionResult BookInventory(UserBook model, HttpPostedFileBase bookFile)
         {
-            // сохранить файл и модель в БД
             return RedirectToAction("BookInventory");
         }
-
-
-
 
         [HttpPost]
         public ActionResult UpdateBook(UserBook model)
@@ -163,6 +141,35 @@ namespace Online_lib.Web.Controllers
             }
 
             return View("_BookInventory", model);
+        }
+
+        public ActionResult Index()
+        {
+            if (Session["UserRole"] == null)
+                return RedirectToAction("Index", "Login");
+
+            string role = Session["UserRole"].ToString();
+
+            if (role == "Admin")
+            {
+                var books = db.UserBooks.ToList();
+                var viewModel = new BookInventoryViewModel
+                {
+                    FormData = new BookViewModel(),
+                    Books = books
+                };
+
+                return View("~/Views/Shared/_BookInventory.cshtml", viewModel);
+            }
+
+            if (role == "User")
+            {
+                int userId = (int)Session["UserID"];
+                var userBooks = db.UserBooks.Where(b => b.UserId == userId).ToList();
+                return View("~/Views/Shared/_BookIssuing.cshtml", userBooks);
+            }
+
+            return RedirectToAction("Index", "Login");
         }
 
     }
