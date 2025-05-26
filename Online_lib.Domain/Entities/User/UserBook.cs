@@ -1,12 +1,12 @@
-﻿namespace Online_lib.Domain.Entities.User
+namespace Online_lib.Domain.Entities.User
 {
     public class UserBook
     {
-        public int Id { get; set; }  // ID книги (обязателен для EF)
-        public string Title { get; set; }  // Название книги
-        public string Author { get; set; }  // Автор книги
-        public string Status { get; set; }  // Статус (Available, Issued и т.д.)
-        public int? UserId { get; set; }  // Владелец (пользователь)
+        public int Id { get; set; }
+        public string Title { get; set; }  
+        public string Author { get; set; }  
+        public string Status { get; set; } 
+        public int? UserId { get; set; }  
         public string BookName { get; set; }
         public string Description { get; set; }
         public string Edition { get; set; }
@@ -20,7 +20,9 @@
         public int ActualStock { get; set; }
         public int CurrentStock { get; set; }
         public int IssuedBooks { get; set; }
-        public string FilePath { get; set; } // путь к pdf-файлу
-        public string FileName { get; set; } // оригинальное имя файла
+        public string FilePath { get; set; }
+        public string FileName { get; set; } 
+        public DateTime UploadDate { get; set; }
+
     }
 }
