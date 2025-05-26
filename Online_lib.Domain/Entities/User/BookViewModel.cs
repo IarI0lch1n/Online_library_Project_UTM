@@ -1,4 +1,4 @@
-﻿namespace Online_lib.Domain.Entities.User
+namespace Online_lib.Domain.Entities.User
 {
     public class BookViewModel
     {
@@ -16,7 +16,9 @@
         public int ActualStock { get; set; }
         public int CurrentStock { get; set; }
         public int IssuedBooks { get; set; }
-
-        // файл лучше оставить в Web модели
+        public DateTime UploadDate { get; set; }
+        public string FilePath { get; set; }
+        public string AuthorName { get; set; }
+        public string PublisherName { get; set; }
     }
 }
