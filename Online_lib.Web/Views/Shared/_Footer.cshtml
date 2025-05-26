@@ -22,23 +22,21 @@
             <p>
                 @if (role == 1)
                 {
-                    <a class="footerlinks btn" href="@Url.Action("ChangeHomepage", "Home", new { homepage = "_AdminLogin" })">Admin Login</a>
+                    <a class="footerlinks btn" href="@Url.Action("Index", "AdminAuthorManagement")">Author Management</a>
                     @Html.Raw("&nbsp;")
-                    <a class="footerlinks btn" href="@Url.Action("ChangeHomepage", "Home", new { homepage = "_AdminAuthorManagement" })">Author Management</a>
-                    @Html.Raw("&nbsp;")
-                    <a class="footerlinks btn" href="@Url.Action("ChangeHomepage", "Home", new { homepage = "_AdminPublisherManagement" })">Publisher Management</a>
+                    <a class="footerlinks btn" href="@Url.Action("Index", "AdminPublisherManagement")">Publisher Management</a>
                     @Html.Raw("&nbsp;")
                     <a class="footerlinks" href="@Url.Action("Index", "Book")">Book Inventory</a>
                     @Html.Raw("&nbsp;")
-                    <a class="footerlinks btn" href="@Url.Action("ChangeHomepage", "Home", new { homepage = "_AdminBookingIssuing" })">Book Issuing</a>
+                    <a class="footerlinks btn" href="@Url.Action("Index", "BookIssuing")">Book Issuing</a>
                     @Html.Raw("&nbsp;")
                     <a class="footerlinks btn"  href="@Url.Action("ManageUsers", "Member")">Member Management</a>
                 }
                 else if (role == 0)
                 {
-                    <a class="footerlinks btn" href="@Url.Action("ChangeHomepage", "Home", new { homepage = "_BookInventory" })">Browse Books</a>
+                    <a class="footerlinks btn" href="@Url.Action("Index", "BookIssuing")">Browse Books</a>
                     @Html.Raw("&nbsp;")
-                    <a class="footerlinks btn" href="@Url.Action("ChangeHomepage", "Home", new { homepage = "_UserProfile" })">My Profile</a>
+                    <a class="footerlinks btn" href="@Url.Action("Dashboard", "Profile")">My Profile</a>
                 }
                 else
                 {
