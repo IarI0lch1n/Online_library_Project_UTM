@@ -11,14 +11,16 @@ namespace Online_lib.Web.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            return View(); 
+        }
+        public ActionResult AboutUs()
+        {
             return View();
         }
 
-        [HttpGet]
-        public ActionResult ChangeHomepage(string homepage)
+        public ActionResult Terms()
         {
-            Session["HomepageView"] = homepage;
-            return RedirectToAction("Index", "Home");
+            return View();
         }
 
     }
