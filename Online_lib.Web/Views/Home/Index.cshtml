@@ -1,12 +1,28 @@
-﻿@{
+@model Online_lib.Domain.Entities.User.ULoginData
+
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @using System.Web.Optimization
 
-
 @section Scripts {
     @Scripts.Render("~/bundles/unobtrusive/js")
-
-    
 }
+
+@{
+    var homepage = Session["HomepageView"] as string;
+}
+
+@if (!string.IsNullOrEmpty(homepage))
+{
+    @Html.Partial(homepage)
+}
+else
+{
+    <div class="text-center mt-5">
+        <h2>Welcome to the online library!</h2>
+        <p>Select a section from the top menu to get started.</p>
+    </div>
+}
+
