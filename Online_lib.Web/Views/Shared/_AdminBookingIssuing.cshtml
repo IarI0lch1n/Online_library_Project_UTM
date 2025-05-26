@@ -1,128 +1,134 @@
+@model Online_lib.Domain.Entities.User.BookInventoryViewModel
+@using Online_lib.BusinessLogic.DBModel
+
+@{
+    int? role = null;
+    int? userId = Session["UserID"] as int?;
+    if (userId.HasValue)
+    {
+        using (var db = new UserContext())
+        {
+            var user = db.Users.Find(userId.Value);
+            if (user != null)
+            {
+                role = (int)user.Role;
+            }
+        }
+    }
+}
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-5">
             <div class="card">
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col text-center">
-                            <h4>Book Issuing</h4>
+                    <h4 class="text-center">Book Issuing</h4>
+                    <div class="text-center">
+                        <img width="100px" src="~/Images/Books.png" />
+                    </div>
+                    <hr />
+
+                    <div class="mb-2">
+                        <label for="MemberID">Member ID</label>
+                        <input class="form-control" id="MemberID" type="text" placeholder="Member ID" />
+                    </div>
+
+                    <div class="mb-2">
+                        <label for="BookID">Book ID</label>
+                        <div class="input-group">
+                            <input class="form-control" id="BookID" type="text" placeholder="Book ID" />
+                            <button class="btn btn-primary" type="button">Go</button>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col text-center">
-                            <img width="100px" src="~/Images/Books.png" />
-                        </div>
+                    <div class="mb-2">
+                        <label for="AuthorName">Author</label>
+                        <input class="form-control" id="AuthorName" type="text" readonly value="@Model.FormData.AuthorName" />
                     </div>
 
-                    <div class="row">
-                        <div class="col">
-                            <hr />
-                        </div>
+                    <div class="mb-2">
+                        <label for="PublisherName">Publisher</label>
+                        <input class="form-control" id="PublisherName" type="text" value="@Model.FormData.PublisherName" readonly  />
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label for="MemberID">Member ID</label>
-                            <input class="form-control" id="MemberID" type="text" placeholder="Member ID" />
-                        </div>
 
-                        <div class="col-md-6">
-                            <label for="BookID">Book ID</label>
-                            <div class="input-group">
-                                <input class="form-control" id="BookID" type="text" placeholder="Book ID" />
-                                <button class="btn btn-primary" type="button">Go</button>
-                            </div>
-                        </div>
+                    <div class="mb-2">
+                        <label for="BookName">Book Name</label>
+                        <input class="form-control" id="BookName" type="text" placeholder="Book Name" value="@Model.FormData.BookName" readonly />
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label for="MemberName">Member Name</label>
-                            <input class="form-control" id="MemberName" type="text" placeholder="Member Name" readonly="True" />
-                        </div>
+                    <div class="mb-2">
+                        <label for="StartDate">Upload Date</label>
+                        <input class="form-control" id="StartDate" type="text" value='@Model.FormData.UploadDate' readonly />
 
-                        <div class="col-md-6">
-                            <label for="BookName">Book Name</label>
-                            <input class="form-control" id="BookName" type="text" placeholder="Book Name" readonly="True" />
-                        </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label for="StartDate">Start Date</label>
-                            <input class="form-control" id="StartDate" type="date" placeholder="Start Date" />
-                        </div>
-
-                        <div class="col-md-6">
-                            <label for="EndDate">End Date</label>
-                            <input class="form-control" id="EndDate" type="date" placeholder="End Date" />
-                        </div>
-                    </div>
 
                     <div class="row">
                         <div class="col-6">
-                            <hr />
                             <button class="btn btn-primary w-100" type="button">Issue</button>
-                            <hr />
                         </div>
                         <div class="col-6">
-                            <hr />
                             <button class="btn btn-success w-100" type="button">Return</button>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <a href="@Url.Action("ChangeHomepage", "Home", new { homepage = "_Homepage" })">Back to Home Page</a>
-            <br /><br />
+            <a href="@Url.Action("Index", "Home")">Back to Home Page</a>
         </div>
 
         <div class="col-md-7">
             <div class="card">
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col text-center">
-                            <h4>Issued Book List</h4>
-                        </div>
-                    </div>
+                    <h4 class="text-center">Available Books</h4>
+                    <hr />
 
-                    <div class="row">
-                        <div class="col">
-                            <hr />
-                        </div>
-                    </div>
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                @if (role == 1)
+                                {
+                                    <th>ID</th>
+                                }
+                                <th>Book Name</th>
+                                <th>Author</th>
+                                <th>Genre</th>
+                                <th>Language</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var book in Model.Books)
+                            {
+                                <tr>
+                                    @if (role == 1)
+                                    {
+                                        <td>@book.Id</td>
+                                    }
+                                    <td>@book.BookName</td>
+                                    <td>@book.AuthorName</td>
+                                    <td>@book.Genres</td>
+                                    <td>@book.Language</td>
+                                    <td>
+                                        @if (!string.IsNullOrEmpty(book.FilePath))
+                                        {
+                                            <a href="@Url.Content(book.FilePath)" class="btn btn-sm btn-info" target="_blank">Download</a>
+                                        }
+                                        else
+                                        {
+                                            <a href="#" class="btn btn-sm btn-warning">Buy</a>
+                                        }
+                                        <a href="@Url.Action("Details", "BookIssuing", new { id = book.Id })" class="btn btn-sm btn-secondary">Info</a>
+                                        @if (role == 1)
+                                        {
+                                            <a href="@Url.Action("Delete", "BookIssuing", new { id = book.Id })" class="btn btn-sm btn-danger">Delete</a>
+                                        }
 
-                    <div class="row">
-                        <div class="col">
-                            <table class="table table-striped table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Member ID</th>
-                                        <th>Book ID</th>
-                                        <th>Member Name</th>
-                                        <th>Book Name</th>
-                                        <th>Start Date</th>
-                                        <th>End Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- Данные будут загружаться из модели -->
-                                    @* Пример итерации по списку в модели *@
-                                    @* @foreach (var book in Model.IssuedBooks) { *@
-                                    @* <tr> *@
-                                    @* <td>@book.MemberID</td> *@
-                                    @* <td>@book.BookID</td> *@
-                                    @* <td>@book.MemberName</td> *@
-                                    @* <td>@book.BookName</td> *@
-                                    @* <td>@book.StartDate.ToString("yyyy-MM-dd")</td> *@
-                                    @* <td>@book.EndDate.ToString("yyyy-MM-dd")</td> *@
-                                    @* </tr> *@
-                                    @* } *@
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
