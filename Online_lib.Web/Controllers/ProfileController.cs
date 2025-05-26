@@ -1,14 +1,19 @@
 using System;
-using System.Linq;
 using System.Web.Mvc;
 using Online_lib.Domain.Entities.User;
+using Online_lib.BusinessLogic;
 using Online_lib.BusinessLogic.DBModel;
 
 namespace Online_lib.Web.Controllers
 {
     public class ProfileController : Controller
     {
-        private UserContext db = new UserContext();
+        private readonly ProfileBL _profileBL;
+
+        public ProfileController()
+        {
+            _profileBL = new ProfileBL(new UserContext());
+        }
 
         public ActionResult Dashboard()
         {
@@ -16,72 +21,27 @@ namespace Online_lib.Web.Controllers
                 return RedirectToAction("Index", "Login");
 
             int userId = (int)Session["UserID"];
+            var model = _profileBL.GetUserProfileWithBooks(userId);
 
-            using (var db = new UserContext())
-            {
-                var user = db.Users.Find(userId);
-                if (user == null)
-                    return HttpNotFound();
+            if (model == null)
+                return HttpNotFound();
 
-                var model = new UserProfileModel
-                {
-                    UserID = user.Id,
-                    FullName = user.Username,
-                    DateOfBirth = user.DateOfBirth,
-                    ContactNumber = user.ContactNumber,
-                    Email = user.Email,
-                    State = user.State,
-                    City = user.City,
-                    Pincode = user.Pincode,
-                    FullAddress = user.FullAddress,
-
-                    Books = db.UserBooks
-                              .Where(b => b.UserId == user.Id)
-                              .ToList()
-                };
-
-                return View("~/Views/Shared/_UserProfile.cshtml", model);
-            }
+            return View("~/Views/Shared/_UserProfile.cshtml", model);
         }
 
         [HttpPost]
         public ActionResult UpdateProfile(UserProfileModel model)
         {
-            var user = db.Users.Find(model.UserID);
-
-            if (user != null)
-            {
-                user.Username = model.FullName;
-                user.DateOfBirth = model.DateOfBirth;
-                user.ContactNumber = model.ContactNumber;
-                user.Email = model.Email;
-                user.State = model.State;
-                user.City = model.City;
-                user.Pincode = model.Pincode;
-                user.FullAddress = model.FullAddress;
-
-                db.SaveChanges();
-            }
-
+            bool success = _profileBL.UpdateUserProfile(model);
+            TempData["SuccessMessage"] = success ? "Profile updated." : "Error updating profile.";
             return RedirectToAction("Dashboard");
         }
 
         [HttpPost]
         public ActionResult ChangePassword(UserProfileModel model)
         {
-            var user = db.Users.Find(model.UserID);
-
-            if (user != null && model.OldPassword == user.Password)
-            {
-                user.Password = model.NewPassword;
-                db.SaveChanges();
-                TempData["SuccessMessage"] = "Пароль успешно изменён.";
-            }
-            else
-            {
-                TempData["ErrorMessage"] = "Старый пароль неверен.";
-            }
-
+            bool changed = _profileBL.ChangePassword(model.UserID, model.OldPassword, model.NewPassword);
+            TempData["SuccessMessage"] = changed ? "Password changed successfully." : "The old password is incorrect.";
             return RedirectToAction("Dashboard");
         }
     }
