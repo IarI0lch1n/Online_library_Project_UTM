@@ -46,8 +46,9 @@
             @RenderBody()
             @if (ViewContext.RouteData.Values["controller"].ToString() == "Home" && ViewContext.RouteData.Values["action"].ToString() == "Index")
             {
-                @Html.Partial(Session["HomepageView"] as string ?? "_Homepage")
+                @Html.Partial("_Homepage")
             }
+
 
             @Html.Partial("_Footer")
         </section>
